@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "loa-raid-helper"
+version = "0.1.0"
+description = "로스트아크 화면 인식 기반 레이드 안내 도우미"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "PySide6==6.10.3", "opencv-python==4.12.0.88", "numpy==2.2.6",
+  "rapidocr-onnxruntime==1.4.4", "mss==10.1.0", "Pillow==11.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pyinstaller==6.22.3", "pytest==8.4.2"]
+
+[project.scripts]
+loa-raid-helper = "loa_raid_helper.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
